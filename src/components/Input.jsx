@@ -23,7 +23,6 @@ const Input = () => {
 
 
   const handleSend = async () => {
-    if(text=="" && img==null)return;
     if (img) {
       const storageRef = ref(storage, uuid());
 
@@ -35,6 +34,7 @@ const Input = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            
             await updateDoc(doc(db, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),
@@ -50,6 +50,7 @@ const Input = () => {
 
 
     } else {
+      if(text=="")return;
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
