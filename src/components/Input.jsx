@@ -59,6 +59,7 @@ const Input = () => {
           date: Timestamp.now(),
         }),
       });
+      setText("");
     }
 
 
@@ -77,7 +78,7 @@ const Input = () => {
       [data.chatId + ".date"]: serverTimestamp(),
     });
 
-    setText("");
+   
     setImg(null);
 
   };
