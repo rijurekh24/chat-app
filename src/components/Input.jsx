@@ -34,7 +34,7 @@ const Input = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            
+
             await updateDoc(doc(db, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),
@@ -50,7 +50,7 @@ const Input = () => {
 
 
     } else {
-      if(text=="")return;
+      if (text == "") return;
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
